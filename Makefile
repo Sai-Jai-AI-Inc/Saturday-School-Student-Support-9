@@ -4,6 +4,7 @@ PYTHON = $(VENV_DIR)/bin/python
 PIP = $(VENV_DIR)/bin/pip
 REQUIREMENTS = requirements.txt
 SCRIPT = main.py
+PARSE_SCRIPT = parse_and_call_openai.py
 
 # Default target
 .PHONY: all
@@ -27,10 +28,15 @@ install: create-venv
 run:
 	$(PYTHON) $(SCRIPT)
 
+# Run the parse_and_call_openai script
+.PHONY: run-parse
+run-parse:
+	$(PYTHON) $(PARSE_SCRIPT)
+
 # Run individual tests
-.PHONY: test-upload-image
-test-upload-image:
-	$(PYTHON) -m unittest tests/test_upload_image.py
+.PHONY: test-encode-image-base64
+test-encode-image-base64:
+	$(PYTHON) -m unittest tests/test_encode_image_base64.py
 	@echo "Test for upload_image completed"
 
 .PHONY: test-create-jsonl
