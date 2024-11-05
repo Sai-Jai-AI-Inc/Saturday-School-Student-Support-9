@@ -70,7 +70,7 @@ def create_jsonl(image_files):
                         "- 1: Identifies or expresses these aspects partially but lacks depth or consistency.\n"
                         "- 2: Articulates and understands most aspects with room for improvement.\n"
                         "- 3: Clearly and comprehensively articulates strengths, weaknesses, emotions, and identity.\n\n"
-                        "Ensure the response is structured to match the following format:\n"
+                        "Ensure the response is structured to match the following JSON format:\n"
                         "{\n"
                         '  "Name": "Author Name",\n'
                         '  "Strengths_and_Weaknesses": <score>,\n'
@@ -89,7 +89,7 @@ def create_jsonl(image_files):
             "method": "POST",
             "url": "/v1/chat/completions",
             "body": {
-                "model": "gpt-4o-mini",
+                "model": "gpt-4o",
                 "temperature": 0.1,
                 "response_format": {"type": "json_object"},
                 "messages": [
